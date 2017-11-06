@@ -11,7 +11,11 @@
 
 * 安装 `go get -v -u github.com/yanjunhui/god`
 * 使用方法和参数与官方 `go get` 一致, 将命令修改为 `god get`
-* 如果god命令无法使用, 请执行 `go env` 检查 `GOBIN` 的值是否为 `$GOPATH/bin` (`$GOPATH`替换为你系统实际 `GOPATH` 路径)
+
+## 无法运行
+### `-bash: god: command not found`
+1. 执行 `go env`, 查看 GOPATH 路径, 例如: `GOPATH="/Users/yanjunhui/go"`
+2. 继续执行 `PATH=$PATH:/Users/yanjunhui/go/bin` (将GOPATH路径修改为你实际路径)
 
 ## 示例
 * 单独下载`golang.org/x`资源 `god -v -u golang.org/x/net/ipv4`
