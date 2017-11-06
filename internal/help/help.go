@@ -27,7 +27,7 @@ func Help(args []string) {
 		return
 	}
 	if len(args) != 1 {
-		fmt.Fprintf(os.Stderr, "usage: go help command\n\nToo many arguments given.\n")
+		fmt.Fprintf(os.Stderr, "usage: god help command\n\nToo many arguments given.\n")
 		os.Exit(2) // failed at 'go help'
 	}
 
@@ -58,31 +58,22 @@ func Help(args []string) {
 		}
 	}
 
-	fmt.Fprintf(os.Stderr, "Unknown help topic %#q. Run 'go help'.\n", arg)
+	fmt.Fprintf(os.Stderr, "Unknown help topic %#q. Run 'god help'.\n", arg)
 	os.Exit(2) // failed at 'go help cmd'
 }
 
-var usageTemplate = `Go is a tool for managing Go source code.
+var usageTemplate = `God is a tool for managing Go tool.
 
 Usage:
 
-	go command [arguments]
+	god command [arguments]
 
 The commands are:
 {{range .}}{{if .Runnable}}
 	{{.Name | printf "%-11s"}} {{.Short}}{{end}}{{end}}
-
-Use "go help [command]" for more information about a command.
-
-Additional help topics:
-{{range .}}{{if not .Runnable}}
-	{{.Name | printf "%-11s"}} {{.Short}}{{end}}{{end}}
-
-Use "go help [topic]" for more information about that topic.
-
 `
 
-var helpTemplate = `{{if .Runnable}}usage: go {{.UsageLine}}
+var helpTemplate = `{{if .Runnable}}usage: god {{.UsageLine}}
 
 {{end}}{{.Long | trim}}
 `
@@ -91,7 +82,7 @@ var documentationTemplate = `{{range .}}{{if .Short}}{{.Short | capitalize}}
 
 {{end}}{{if .Runnable}}Usage:
 
-	go {{.UsageLine}}
+	god {{.UsageLine}}
 
 {{end}}{{.Long | trim}}
 
